@@ -1,3 +1,6 @@
+conda env create --name mbpo-pytorch --file=mbpo_env.yml
+
+
 ## Overview
 This is a re-implementation of the model-based RL algorithm MBPO in pytorch as described in the following paper: [When to Trust Your Model: Model-Based Policy Optimization](https://arxiv.org/abs/1906.08253).
 
