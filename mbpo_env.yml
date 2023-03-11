@@ -93,4 +93,6 @@ dependencies:
     - urllib3==1.26.14
     - werkzeug==2.2.3
     - wrapt==1.15.0
+    - pandas
+    - patchelf
 prefix: /home/fremont/users/sorina_lupu/.conda/envs/mbpo-pytorch
