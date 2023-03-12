@@ -28,7 +28,7 @@ class GaussianPolicy(nn.Module):
         self.filename = filename
 
         self.apply(weights_init_)
-        self.get_params()
+        self.save_params_to_file()
 
 
     def forward(self, state):
@@ -39,7 +39,7 @@ class GaussianPolicy(nn.Module):
         log_std = torch.clamp(log_std, min=LOG_SIG_MIN, max=LOG_SIG_MAX)
         return mean, log_std
 
-    def get_params(self):
+    def save_params_to_file(self):
         print(self.filename)
         for i, param in enumerate(self.parameters()):
             print(param)
