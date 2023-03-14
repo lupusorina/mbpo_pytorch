@@ -1,0 +1,3 @@
+[submodule "bnn_hmc_google_research"]
+	path = bnn_hmc_google_research
+	url = https://github.com/lupusorina/bnn_hmc_google_research.git
