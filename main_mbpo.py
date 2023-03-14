@@ -95,9 +95,11 @@ def readParser():
     parser.add_argument('--max_path_length', type=int, default=1000, metavar='A',
                         help='max length of path')
 
-
     parser.add_argument('--model_type', default='tensorflow', metavar='A',
                         help='predict model -- pytorch or tensorflow')
+
+    parser.add_argument('--hardware_name', default='nuc', metavar='A',
+                        help='hardware used to run the code')
 
     parser.add_argument('--cuda', default=True, action="store_true",
                         help='run on CUDA (default: True)')
