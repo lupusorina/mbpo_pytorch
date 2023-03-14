@@ -1,6 +1,6 @@
 import torch
 
-torch.set_default_tensor_type(torch.cuda.FloatTensor)
+# torch.set_default_tensor_type(torch.cuda.FloatTensor)
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
@@ -197,7 +197,7 @@ class EnsembleDynamicsModel():
         self.reward_size = reward_size
         self.network_size = network_size
         self.elite_model_idxes = []
-        self.ensemble_model = EnsembleModel(state_size, action_size, reward_size, network_size, hidden_size, use_decay=use_decay)
+        self.ensemble_model = EnsembleModel(state_size, action_size, reward_size, network_size, hidden_size, use_decay=use_decay).to(device)
         self.scaler = StandardScaler()
 
     def train(self, inputs, labels, batch_size=256, holdout_ratio=0., max_epochs_since_update=5):
