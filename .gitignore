@@ -1,6 +1,6 @@
 data
 .idea
 *__pycache__*
-*.csv
 *.png
 *.jpg
+MUJOCO_LOG.TXT
