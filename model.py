@@ -222,6 +222,7 @@ class EnsembleDynamicsModel():
         holdout_inputs = holdout_inputs[None, :, :].repeat([self.network_size, 1, 1])
         holdout_labels = holdout_labels[None, :, :].repeat([self.network_size, 1, 1])
 
+        sum_mse_loss_list = []
         for epoch in itertools.count():
 
             train_idx = np.vstack([np.random.permutation(train_inputs.shape[0]) for _ in range(self.network_size)])
@@ -240,6 +241,8 @@ class EnsembleDynamicsModel():
                 holdout_mean, holdout_logvar = self.ensemble_model(holdout_inputs, ret_log_var=True)
                 _, holdout_mse_losses = self.ensemble_model.loss(holdout_mean, holdout_logvar, holdout_labels, inc_var_loss=False)
                 holdout_mse_losses = holdout_mse_losses.detach().cpu().numpy()
+                sum_mse_loss = np.sum(holdout_mse_losses)
+                sum_mse_loss_list.append(sum_mse_loss)
                 sorted_loss_idx = np.argsort(holdout_mse_losses)
                 self.elite_model_idxes = sorted_loss_idx[:self.elite_size].tolist()
                 break_train = self._save_best(epoch, holdout_mse_losses)
